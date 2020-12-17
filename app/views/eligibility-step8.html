@@ -8,6 +8,14 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+
+        {% if errorSummary.length > 0 %}
+           {{ govukErrorSummary({
+               titleText: "There is a problem",
+               errorList: errorSummary
+           }) }}
+       {% endif %}
+
       <a href="/start" class="govuk-back-link">Back</a>
 
       <form action="/eligibility-step9" method="post" class="form">
@@ -21,11 +29,15 @@
 
           </legend>
           <div id="changed-name-hint" class="govuk-hint">
-            We understand that for SMEs or smaller companies it may be that the role isn’t exclusive, you just need someone in your organisation that takes responsibility for this.
+          This may not be their job role. You just need someone in your organisation that takes responsibility for this.
           </div>
 
           <p>
             </p>
+
+            <span id="changed-name-error" class="govuk-error-message">
+                 <span class="govuk-visually-hidden">Error:</span> Select either of these options to proceed
+               </span>
 
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">

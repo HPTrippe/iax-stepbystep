@@ -8,6 +8,14 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+
+        {% if errorSummary.length > 0 %}
+           {{ govukErrorSummary({
+               titleText: "There is a problem",
+               errorList: errorSummary
+           }) }}
+       {% endif %}
+
         <a href="/start" class="govuk-back-link">Back</a>
 
         <form action="/eligibility-step-results" method="post" class="form">
@@ -21,11 +29,19 @@
 
           </legend>
           <div id="changed-name-hint" class="govuk-hint">
-            These roles could include, a chief information security officer, data controller or security officer.
+            These roles could include a chief information security officer, data controller or security officer.
           </div>
 
           <p>
             </p>
+
+            <span id="changed-name-error" class="govuk-error-message">
+                 <span class="govuk-visually-hidden">Error:</span> Select either of these options to proceed
+               </span>
+
+            <span id="changed-name-error" class="govuk-error-message">
+                 <span class="govuk-visually-hidden">Error:</span> Select either of these options to proceed
+               </span>
 
             <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
